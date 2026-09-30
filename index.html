@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leonardo e Jessana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#EDE3D0; --cartao:#F8F2E6; --kraft:#C6A677; --tinta:#1E2940; --tinta-suave:#4A5266;
+  --ouro:#94691F; --capa:#1E2940; --capa-texto:#F3E9D2; --capa-ouro:#D4B06A;
+  --barbante:#A88760; --sombra:rgba(30,41,64,.18);
+  --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --serif:"EB Garamond", Georgia, "Times New Roman", serif;
+  --mao:"Caveat", "Segoe Print", "Bradley Hand", cursive;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#171D2C; --cartao:#222A3D; --kraft:#8E7050; --tinta:#EDE3D0; --tinta-suave:#B9BFCC;
+    --ouro:#D4B06A; --capa:#10151F; --sombra:rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#171D2C; --cartao:#222A3D; --kraft:#8E7050; --tinta:#EDE3D0; --tinta-suave:#B9BFCC;
+  --ouro:#D4B06A; --capa:#10151F; --sombra:rgba(0,0,0,.45);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);font-family:var(--serif);font-size:1.15rem;line-height:1.65;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--capa-ouro);outline-offset:3px}
+.faixa{max-width:40rem;margin:0 auto;padding:0 1.5rem}
+section{padding:4.5rem 0}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,6vw,2.6rem);line-height:1.1;margin:0 0 .3rem}
+.nota{font-family:var(--mao);font-size:1.5rem;color:var(--ouro);margin:0 0 2.2rem;line-height:1.2}
+
+/* ---------- Capa ---------- */
+.capa{background:var(--capa);color:var(--capa-texto);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:0 1.25rem 3rem;text-align:center}
+.barbante{width:2px;height:clamp(50px,11vh,110px);background:repeating-linear-gradient(to bottom,var(--barbante) 0 6px,transparent 6px 8px)}
+.etiqueta{
+  position:relative;width:min(22rem,100%);background:#C9A97A;color:#26303F;
+  padding:4rem 1.6rem 2rem;
+  clip-path:polygon(18% 0,82% 0,100% 13%,100% 100%,0 100%,0 13%);
+  transform-origin:50% -40px;animation:balanca 3.2s ease-out 1;
+  filter:drop-shadow(0 12px 22px rgba(0,0,0,.35));
+}
+.etiqueta::before{content:"";position:absolute;top:1.25rem;left:50%;width:1.25rem;height:1.25rem;margin-left:-.625rem;border-radius:50%;background:var(--capa);box-shadow:inset 0 0 0 3px rgba(38,48,63,.3)}
+@keyframes balanca{0%{transform:rotate(7deg)}25%{transform:rotate(-5deg)}50%{transform:rotate(3deg)}75%{transform:rotate(-1.5deg)}100%{transform:rotate(0)}}
+.etiqueta .bodas{font-family:var(--mao);font-size:1.6rem;margin:0;line-height:1.1}
+.etiqueta h1{font-family:var(--display);font-weight:500;font-size:clamp(2.8rem,11vw,3.6rem);line-height:.95;margin:.6rem 0 .7rem}
+.etiqueta h1 span{display:block;font-style:italic;font-size:.6em;margin:.15rem 0}
+.etiqueta .data{margin:0;font-style:italic;font-size:1.05rem}
+
+.juntos{margin:2.6rem 0 .8rem;font-family:var(--mao);font-size:1.6rem;color:var(--capa-ouro)}
+.contador{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;width:min(24rem,100%);background:rgba(212,176,106,.35);border:1px solid rgba(212,176,106,.35)}
+.contador div{background:var(--capa);padding:.9rem .3rem .7rem}
+.contador strong{display:block;font-family:var(--display);font-weight:500;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.contador span{font-size:.95rem;color:var(--capa-ouro)}
+.abrir{margin-top:2.4rem;color:var(--capa-texto);font-style:italic;font-size:1.1rem}
+
+/* ---------- Marcos ---------- */
+.marcos{display:grid;gap:1.1rem}
+.marco{background:var(--cartao);padding:1.2rem 1.4rem;box-shadow:0 6px 16px var(--sombra);display:flex;gap:1.1rem;align-items:baseline}
+.marco:nth-child(odd){transform:rotate(-.7deg)}
+.marco:nth-child(even){transform:rotate(.6deg)}
+.marco b{font-family:var(--mao);font-size:2.2rem;color:var(--ouro);line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.marco p{margin:0;line-height:1.4}
+
+/* ---------- Capítulos ---------- */
+.capitulos{list-style:none;margin:0;padding:0;border-left:2px dashed var(--kraft);margin-left:.4rem}
+.capitulos li{position:relative;padding:0 0 2.6rem 1.9rem}
+.capitulos li:last-child{padding-bottom:0}
+.capitulos li::before{content:"";position:absolute;left:-.6rem;top:.6rem;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--ouro);border:3px solid var(--papel)}
+.capitulos .rotulo{font-family:var(--mao);font-size:1.5rem;color:var(--ouro);line-height:1}
+.capitulos h3{font-family:var(--display);font-weight:600;font-size:1.8rem;line-height:1.15;margin:.25rem 0 .3rem}
+.capitulos p{margin:0;color:var(--tinta-suave)}
+.foto-cap{margin:1.2rem 0 0;max-width:22rem;background:var(--cartao);padding:.7rem .7rem 0;box-shadow:0 8px 18px var(--sombra);transform:rotate(1.2deg)}
+.foto-cap img{width:100%;height:auto}
+.foto-cap figcaption{font-family:var(--mao);font-size:1.35rem;text-align:center;padding:.5rem 0 .7rem;line-height:1.15}
+.fala{margin:1rem 0 0;padding:.8rem 1.1rem;background:var(--cartao);box-shadow:0 5px 14px var(--sombra);transform:rotate(-.8deg);border-left:3px solid var(--ouro)}
+.fala p{font-family:var(--mao);font-size:1.55rem;line-height:1.2;color:var(--tinta)}
+.fala cite{display:block;margin-top:.3rem;font-style:italic;font-size:.95rem;color:var(--ouro)}
+
+/* ---------- Varal ---------- */
+.varal-wrap{overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch}
+.varal{position:relative;display:flex;gap:1.6rem;padding:2.2rem 1.5rem 1rem;width:max-content;margin:0 auto}
+.varal::before{content:"";position:absolute;left:0;right:0;top:1.2rem;height:2px;background:var(--barbante)}
+.polaroid{position:relative;width:11.5rem;margin:0;background:var(--cartao);padding:.7rem .7rem 2.2rem;box-shadow:0 8px 16px var(--sombra);flex:none}
+.polaroid:nth-child(odd){transform:rotate(-2.5deg)}
+.polaroid:nth-child(even){transform:rotate(2deg);margin-top:.6rem}
+.polaroid::before{content:"";position:absolute;top:-1.5rem;left:50%;width:.7rem;height:2.2rem;margin-left:-.35rem;background:#B89565;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.polaroid .img{aspect-ratio:1;background:repeating-linear-gradient(45deg,var(--kraft) 0 10px,color-mix(in srgb,var(--kraft) 78%,var(--papel)) 10px 20px);display:grid;place-items:center;font-family:var(--mao);font-size:1.3rem;color:#26303F;overflow:hidden}
+.polaroid .img img{width:100%;height:100%;object-fit:cover}
+.polaroid figcaption{font-family:var(--mao);font-size:1.3rem;text-align:center;padding:.5rem 0 .7rem;line-height:1.15}
+
+/* ---------- Epílogo ---------- */
+.carta{background:var(--cartao);padding:2.4rem 1.8rem;box-shadow:0 10px 24px var(--sombra);transform:rotate(-.6deg);border-top:5px solid var(--ouro)}
+.carta p{margin:0 0 1rem}
+.carta .assinatura{font-family:var(--mao);font-size:1.9rem;text-align:right;margin:1.6rem 0 0;line-height:1.1}
+footer{text-align:center;padding:1rem 1.5rem 3rem;font-family:var(--mao);font-size:1.3rem;color:var(--tinta-suave)}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="barbante" aria-hidden="true"></div>
+  <div class="etiqueta">
+    <p class="bodas" id="bodas"></p>
+    <h1 id="nomes"></h1>
+    <p class="data" id="data"></p>
+  </div>
+  <p class="juntos">juntos há</p>
+  <div class="contador" role="timer" aria-live="off">
+    <div><strong id="c-anos">0</strong><span id="l-anos">anos</span></div>
+    <div><strong id="c-meses">0</strong><span id="l-meses">meses</span></div>
+    <div><strong id="c-dias">0</strong><span id="l-dias">dias</span></div>
+    <div><strong id="c-horas">0</strong><span id="l-horas">horas</span></div>
+    <div><strong id="c-min">0</strong><span id="l-min">minutos</span></div>
+    <div><strong id="c-seg">0</strong><span id="l-seg">segundos</span></div>
+  </div>
+  <a class="abrir" href="#marcos">Abrir o livro</a>
+</header>
+
+<main>
+  <section id="marcos">
+    <div class="faixa">
+      <h2>Em números</h2>
+      <p class="nota">e continua contando…</p>
+      <div class="marcos" id="lista-marcos"></div>
+    </div>
+  </section>
+
+  <section id="historia" style="padding-top:1rem">
+    <div class="faixa">
+      <h2>A história</h2>
+      <p class="nota">capítulo por capítulo</p>
+      <ol class="capitulos" id="capitulos"></ol>
+    </div>
+  </section>
+
+  <section id="fotos" style="padding-top:1rem">
+    <div class="faixa">
+      <h2>Pendurado no varal</h2>
+      <p class="nota">arraste para o lado</p>
+    </div>
+    <div class="varal-wrap"><div class="varal" id="varal"></div></div>
+  </section>
+
+  <section id="epilogo" style="padding-top:1.5rem">
+    <div class="faixa">
+      <div class="carta" id="carta"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="rodape"></footer>
+
+<script>
+/* =========================================================
+   EDITE AQUI: todo o conteúdo do site está neste objeto.
+   ========================================================= */
+const CONFIG = {
+  noivo: "Leonardo",
+  noiva: "Jessana",
+  casamento: "1998-09-05T19:00",   // data e hora da cerimônia
+
+  // Nome das bodas por ano de casamento. Acrescente os que quiser.
+  bodas: { 25: "Bodas de Prata", 28: "Bodas de Hematita", 29: "Bodas de Erva", 30: "Bodas de Pérola", 50: "Bodas de Ouro" },
+
+  // falas: opcional, aparecem como bilhetes manuscritos [{ t: "frase", quem: "quem disse" }]
+  capitulos: [
+    { rotulo: "Capítulo I · Canoas", titulo: "A mesma congregação",
+      texto: "Leonardo e Jessana frequentavam a mesma congregação, em Canoas. Quando o tio Cláudio começou a namorar a Jemima, os dois passaram a conviver mais. Sobre quem deu o primeiro passo, as versões não batem: ele garante que foi ela, com a ajuda de uma amiga em comum; ela lembra de uma carta que recebeu enquanto servia como pioneira em Jaguaruna, na qual ele declarava que a amava." },
+    { rotulo: "Capítulo II · 1996", titulo: "O pedido de namoro",
+      texto: "Leonardo levou a noite inteira para reunir coragem e conversar com o pai da Jessana. Quando finalmente conseguiu, pediu a mão dela… em namoro. Escondido atrás do sofá, o tio Jonata acompanhava tudo e mal conseguia conter o riso.",
+      falas: [{ t: "Passei a noite inteira adiando a conversa com o teu avô.", quem: "Leonardo" }] },
+    { rotulo: "Capítulo III", titulo: "O noivado",
+      texto: "O pedido de casamento veio na mesma noite do noivado, feito ao microfone, para que toda a churrascaria ouvisse." },
+    { rotulo: "Capítulo IV · 5 de setembro de 1998", titulo: "O sim",
+      foto: { src: "fotos/cerimonia.jpg", legenda: "5 de setembro de 1998" },
+      texto: "No cartório, o noivo chegou depois da noiva, e a juíza por pouco não foi embora. Por sorte, outro casal aguardava sua vez e acabou casando antes deles. Na cerimônia, Jessana queria que os votos fossem ditos de cor e pediu que o Leonardo ensaiasse bastante. Na hora, ele esqueceu metade, e ela precisou se segurar para não rir." },
+    { rotulo: "Capítulo V", titulo: "Uma festa feita a muitas mãos",
+      foto: { src: "fotos/painel.jpg", legenda: "O painel do tio Cláudio" },
+      texto: "A festa foi no salão de uma empresa, a Maxion, e foi preparada pela própria família: a tia Eloina cuidou da salada, o tio Alzerino e outros irmãos assaram a carne, e o tio Cláudio desenhou os noivos em um painel enorme. A noite teve trilha própria, com “Estou apaixonado”, “My First Love”, “Unchained Melody” e “Monte Castelo”.",
+      falas: [{ t: "Ver a mãe correndo até o último minuto para arrumar o salão e todos se dedicando daquele jeito me emocionou muito.", quem: "Jessana" }] },
+    { rotulo: "Capítulo VI · Gramado", titulo: "A lua de mel",
+      texto: "Os primeiros dias de casados foram passados na serra, nas Cabanas do tio Xico, em Gramado." },
+    { rotulo: "Capítulo VII · 2006", titulo: "Chega o Guilherme",
+      texto: "A gravidez chegou de surpresa e, no início, trouxe susto e medo. Aos poucos, à medida que eles se acostumaram com a nova realidade, o inesperado se tornou algo mágico. Leonardo, que antes tinha receio até de segurar uma criança no colo, descobriu em si um pai que jamais havia imaginado.",
+      falas: [
+        { t: "Foi um momento especial, verdadeiramente magnífico.", quem: "Leonardo" },
+        { t: "Aprendi um amor que eu nem imaginava ser possível sentir.", quem: "Jessana" }
+      ] },
+    { rotulo: "Capítulo VIII · 2013", titulo: "Chega o João Pedro",
+      texto: "Desta vez, o bebê foi planejado. Depois de tantos anos desde o nascimento do Guilherme, Leonardo admite que estava um pouco fora de forma e com menos energia, já que o primeiro filho tinha dado bastante trabalho. Mas a chegada do João Pedro abriu uma nova etapa: ele pôde reviver tudo o que já tinha feito com o filho mais velho, agora com os dois juntos, das brincadeiras às guerrinhas na hora do banho.",
+      falas: [{ t: "Pude repetir tudo o que fazia com o Guilherme pequeno, só que agora com os dois ao mesmo tempo.", quem: "Leonardo" }] },
+    { rotulo: "Capítulo IX", titulo: "Pé na estrada",
+      texto: "Entre tantas viagens, duas ficaram guardadas com carinho. As férias em Bento Gonçalves, quando ainda eram apenas os três. E, anos depois, a volta a Gramado, onde tudo tinha começado como casal, agora em quatro, com o João Pedro ainda bebê, percorrendo os pontos turísticos da serra." },
+    { rotulo: "Capítulo X", titulo: "O capítulo mais difícil",
+      foto: { src: "fotos/todos-juntos.jpg", legenda: "Todos juntos, de cabeça raspada" },
+      texto: "Pouco antes da pandemia, veio a fase mais dura da vida deles: o diagnóstico de câncer de mama da Jessana. Foi uma notícia completamente inesperada, algo que eles jamais imaginaram enfrentar. Ainda assim, como fizeram em tudo, tiraram lições do caminho. Aproximaram-se ainda mais de Jeová, dos irmãos e da família, aprenderam a ser mais leves e menos exigentes, e saíram mais unidos como casal e como família. A luta continua até hoje, sobretudo para a Jessana, mas ela nunca a enfrenta sozinha.",
+      falas: [{ t: "A gente se apega a tanta coisa pequena que não merece nosso tempo nem nossa atenção. Isso nos ensinou a valorizar o que realmente importa.", quem: "Leonardo" }] },
+    { rotulo: "Capítulo XI · hoje", titulo: "Ainda escrevendo",
+      texto: "Para eles, todo momento em família é especial, principalmente quando todos riem até perder o fôlego. Leonardo admira a fé e a dedicação da Jessana, e a forma como ela se tornou, com os anos, uma pessoa mais leve e menos exigente. Jessana admira a coragem dele de mostrar a própria fragilidade e chorar sem vergonha, além do respeito e da educação com que sempre a tratou e do amor que faz questão de demonstrar. Para o futuro, os planos são simples: conversar, andar de mãos dadas, fazer piada, dar risada juntos e viajar para conhecer novos lugares.",
+      falas: [
+        { t: "Sejam amigos, fiéis e verdadeiros, e amem como se não houvesse amanhã.", quem: "o conselho do Leonardo" },
+        { t: "Saibam perdoar e aceitem o outro como ele é.", quem: "o conselho da Jessana" }
+      ] }
+  ],
+
+  // src: caminho da imagem no repositório (ex: "fotos/casamento.jpg"). Vazio mostra um espaço reservado.
+  fotos: [
+    { src: "fotos/os-noivos.jpg", legenda: "Os noivos" },
+    { src: "fotos/a-entrada.jpg", legenda: "A entrada" },
+    { src: "fotos/o-sim.jpg", legenda: "O sim" },
+    { src: "fotos/a-saida.jpg", legenda: "Casados!" },
+    { src: "fotos/primeira-danca.jpg", legenda: "A primeira dança" },
+    { src: "fotos/o-beijo.jpg", legenda: "O beijo" },
+    { src: "fotos/recem-casados.jpg", legenda: "Recém-casados" },
+    { src: "fotos/com-guilherme-pequeno.jpg", legenda: "Com o Guilherme pequeno" },
+    { src: "fotos/os-quatro.jpg", legenda: "Os quatro" },
+    { src: "fotos/jessana-e-joao.jpg", legenda: "Jessana e João Pedro" },
+    { src: "fotos/noite-de-festa.jpg", legenda: "Noite de festa" },
+    { src: "fotos/entre-flores.jpg", legenda: "Entre flores" },
+    { src: "fotos/lado-a-lado.jpg", legenda: "Lado a lado" },
+    { src: "fotos/sorrisos.jpg", legenda: "Sorrisos de sempre" },
+    { src: "fotos/maos-a-obra.jpg", legenda: "Mãos à obra" },
+    { src: "fotos/bosque.jpg", legenda: "Passeio no bosque" },
+    { src: "fotos/praia.jpg", legenda: "Dia de praia" },
+    { src: "fotos/pai-e-filhos.jpg", legenda: "Pai e filhos" },
+    { src: "fotos/forca.jpg", legenda: "Força e sorriso" },
+    { src: "fotos/descanso.jpg", legenda: "Descanso" },
+    { src: "fotos/juntos.jpg", legenda: "Juntos" },
+    { src: "fotos/dias-de-hoje.jpg", legenda: "Dias de hoje" },
+    { src: "fotos/sempre-juntos.jpg", legenda: "Sempre juntos" },
+    { src: "fotos/noite-em-familia.jpg", legenda: "Uma noite especial em família" },
+    { src: "fotos/passeio-em-familia.jpg", legenda: "Passeio em família" },
+    { src: "fotos/os-quatro-hoje.jpg", legenda: "Os quatro, hoje" }
+  ],
+
+  // Deixe vazio ([]) para esconder a carta. Para mostrar, escreva um parágrafo por item entre aspas.
+  carta: [],
+  assinatura: "Guilherme e João Pedro",
+  rodape: "Um livro que continua sendo escrito"
+};
+
+/* ================== Não precisa editar abaixo ================== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const inicio = new Date(CONFIG.casamento);
+const DIA = 86400000;
+const fmtData = d => d.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+const num = n => n.toLocaleString("pt-BR");
+
+function somarMeses(data, meses) {
+  const d = new Date(data);
+  const diaOriginal = d.getDate();
+  d.setDate(1);
+  d.setMonth(d.getMonth() + meses);
+  const ultimo = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  d.setDate(Math.min(diaOriginal, ultimo));
+  return d;
+}
+
+function tempoJuntos(agora) {
+  let meses = (agora.getFullYear() - inicio.getFullYear()) * 12 + (agora.getMonth() - inicio.getMonth());
+  if (somarMeses(inicio, meses) > agora) meses--;
+  const base = somarMeses(inicio, meses);
+  let resto = Math.floor((agora - base) / 1000);
+  const dias = Math.floor(resto / 86400); resto %= 86400;
+  const horas = Math.floor(resto / 3600); resto %= 3600;
+  const min = Math.floor(resto / 60);
+  const seg = resto % 60;
+  return { anos: Math.floor(meses / 12), meses: meses % 12, dias, horas, min, seg };
+}
+
+const rotulos = {
+  anos: ["ano", "anos"], meses: ["mês", "meses"], dias: ["dia", "dias"],
+  horas: ["hora", "horas"], min: ["minuto", "minutos"], seg: ["segundo", "segundos"]
+};
+
+function atualizarContador() {
+  const t = tempoJuntos(new Date());
+  for (const k of Object.keys(rotulos)) {
+    $("c-" + k).textContent = t[k];
+    $("l-" + k).textContent = rotulos[k][t[k] === 1 ? 0 : 1];
+  }
+  return t;
+}
+
+function montarMarcos() {
+  const agora = new Date();
+  const totalDias = Math.floor((agora - inicio) / DIA);
+  const anosAtuais = tempoJuntos(agora).anos;
+
+  const proxAnos = anosAtuais + 1;
+  const proxAniv = new Date(inicio); proxAniv.setFullYear(inicio.getFullYear() + proxAnos);
+  const faltamAniv = Math.ceil((proxAniv - agora) / DIA);
+  const nomeProx = CONFIG.bodas[proxAnos] ? `, ${CONFIG.bodas[proxAnos]}` : "";
+
+  const proxMil = (Math.floor(totalDias / 1000) + 1) * 1000;
+  const dataMil = new Date(inicio.getTime() + proxMil * DIA);
+
+  const marcos = [
+    { n: num(totalDias), t: "dias de casados até hoje." },
+    { n: num(faltamAniv), t: `${faltamAniv === 1 ? "dia" : "dias"} para os ${proxAnos} anos${nomeProx}, em ${fmtData(proxAniv)}.` },
+    { n: num(proxMil), t: `dias juntos em ${fmtData(dataMil)}.` }
+  ];
+  $("lista-marcos").innerHTML = marcos.map(m => `<div class="marco"><b>${m.n}</b><p>${esc(m.t)}</p></div>`).join("");
+
+  const nomeAtual = CONFIG.bodas[anosAtuais];
+  $("bodas").textContent = `${anosAtuais} anos${nomeAtual ? " · " + nomeAtual : ""}`;
+}
+
+document.title = `${CONFIG.noivo} e ${CONFIG.noiva}`;
+$("nomes").innerHTML = `${esc(CONFIG.noivo)}<span>e</span>${esc(CONFIG.noiva)}`;
+$("data").textContent = "casados em " + fmtData(inicio);
+
+$("capitulos").innerHTML = CONFIG.capitulos.map(c =>
+  `<li><div class="rotulo">${esc(c.rotulo)}</div><h3>${esc(c.titulo)}</h3><p>${esc(c.texto)}</p>${c.foto ? `<figure class="foto-cap"><img src="${esc(c.foto.src)}" alt="${esc(c.foto.legenda)}" loading="lazy"><figcaption>${esc(c.foto.legenda)}</figcaption></figure>` : ""}${(c.falas || []).map(f =>
+    `<blockquote class="fala"><p>“${esc(f.t)}”</p><cite>${esc(f.quem || "")}</cite></blockquote>`).join("")}</li>`).join("");
+
+$("varal").innerHTML = CONFIG.fotos.map(f =>
+  `<figure class="polaroid"><div class="img">${f.src
+    ? `<img src="${esc(f.src)}" alt="${esc(f.legenda)}" loading="lazy">`
+    : "sua foto aqui"}</div></figure>`).join("");
+
+if (!CONFIG.carta.length) $("epilogo").hidden = true;
+$("carta").innerHTML = CONFIG.carta.map(p => `<p>${esc(p)}</p>`).join("") +
+  `<p class="assinatura">${esc(CONFIG.assinatura)}</p>`;
+$("rodape").textContent = CONFIG.rodape;
+
+montarMarcos();
+atualizarContador();
+let ultimoDia = new Date().getDate();
+setInterval(() => {
+  atualizarContador();
+  const hoje = new Date().getDate();
+  if (hoje !== ultimoDia) { ultimoDia = hoje; montarMarcos(); }
+}, 1000);
+</script>
+</body>
+</html>
